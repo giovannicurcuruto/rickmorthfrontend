@@ -3,6 +3,8 @@ import { useState } from 'react'
 import './App.css'
 import PrimaryInput from './components/Input/PrimaryInput'
 import { Button } from '@chakra-ui/react'
+import Logo from './components/Logo/Logo'
+
 
 function App() {
   const [char, setChar] = useState("")
@@ -14,7 +16,10 @@ function App() {
   return (
     <>
       <div className="container">
-        <div className="container-form">
+        <div className="logo-container">
+          <Logo/>     
+        </div> 
+        <div className="container-form">          
           <PrimaryInput            
             value={char} 
             onChange={handleChange} 

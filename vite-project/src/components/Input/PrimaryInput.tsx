@@ -10,14 +10,15 @@ interface PrimaryInputProps {
 
 }
 export default function PrimaryInput({ name, value, onChange} : PrimaryInputProps){
-    return(        
+    return(
+        
         <div className="input-container">
-            <Input variant='filled' 
+            <Input variant='filled'
                 placeholder='Search characters'
                 name={name}
-                value={value} 
-                onChange={onChange} 
-            />
+                value={value}
+                onChange={onChange} />
         </div>
+        
     )
 }
