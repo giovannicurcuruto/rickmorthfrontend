@@ -1,17 +1,12 @@
-
-import { useState } from 'react'
-import './App.css'
-import PrimaryInput from './components/Input/PrimaryInput'
-import { Button } from '@chakra-ui/react'
 import Logo from './components/Logo/Logo'
+import TestRequisition from './pages/Test_requisition'
+import Home from './pages/Home'
+
+import './App.css'
 
 
 function App() {
-  const [char, setChar] = useState("")
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-    setChar(event.target.value)
-  }
+  
 
   return (
     <>
@@ -20,12 +15,8 @@ function App() {
           <Logo/>     
         </div> 
         <div className="container-form">          
-          <PrimaryInput            
-            value={char} 
-            onChange={handleChange} 
-            name="character" 
-          />
-          <Button colorScheme='teal' variant='outline'> Search </Button>
+          <Home />
+          
         </div>
       </div>
     </>
