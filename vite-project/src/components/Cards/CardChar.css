@@ -1,0 +1,18 @@
+
+.borderCard{
+    box-sizing: border-box;
+    border-radius: 17px; 
+    border: 2px solid #1E1E1E;
+}
+
+.imgcard{
+    border-radius: 17px; 
+}
+.nameCardCharacter{
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+.nameCardCharacter span{
+    font-size: 12px;
+}

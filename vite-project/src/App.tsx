@@ -1,8 +1,8 @@
 import Logo from './components/Logo/Logo'
-import TestRequisition from './pages/Test_requisition'
 import Home from './pages/Home'
 
 import './App.css'
+
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Home />
           
         </div>
+        
       </div>
     </>
   )
