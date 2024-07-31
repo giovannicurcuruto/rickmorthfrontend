@@ -20,17 +20,3 @@
   flex-direction: column;
 }
 
-.container-form{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 19.375rem;
-}
-
-.logo-container{
-  display: flex;
-  margin-top: -150px;
-  margin-bottom: 150px;
-  height: 100hw;
-}
-
