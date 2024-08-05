@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Center, Flex, Heading, IconButton, Image, Stack, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Center, Flex, Grid, Heading, IconButton, Image, Stack, Text } from "@chakra-ui/react";
 
 import './CardChar.css'
 
@@ -12,7 +12,7 @@ interface CardCharProps {
 export default function CardChar({img_url, name_char, race_char} : CardCharProps){
     return(
         <>
-          <Center py={6}>
+          
             <Box
               maxW={'270px'}
               w={'full'}
@@ -43,7 +43,7 @@ export default function CardChar({img_url, name_char, race_char} : CardCharProps
                 </Box>
               </Flex>
             </Box>
-          </Center>
+          
         </>
         
     )

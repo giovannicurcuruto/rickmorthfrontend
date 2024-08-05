@@ -26,9 +26,3 @@ function App() {
 
 export default App
 
-
-/* <BrowserRouter>
-<Route path="/" element={<Home/>} />
-<Route path="/Results" element={<ResultsPage/>} />
-<Route path='/loading' element={<LoadingPage/>}/>
-</BrowserRouter> */

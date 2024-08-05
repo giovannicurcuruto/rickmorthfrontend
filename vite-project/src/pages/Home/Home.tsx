@@ -5,7 +5,7 @@ import CardChar from '../../components/Cards/CardChar'
 
 import './home.css'
 import Logo from '../../components/Logo/Logo'
-import { Outlet } from 'react-router-dom'
+
 
 const url_api = "http://127.0.0.1:5000/character/"
 
@@ -55,7 +55,7 @@ export default function Home(props : HomeProps){
                     <Logo/>
                 </div>
                 <div className="container-form">                    
-                    '<PrimaryInput            
+                    <PrimaryInput            
                         value={char} 
                         onChange={handleChange} 
                         name="character" />
