@@ -1,6 +1,15 @@
 .container-form{
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 19.375rem;
+    margin-bottom: 5.625rem;
   }
+
+  .logo-container {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 16px;
+    margin-top: auto;
+}

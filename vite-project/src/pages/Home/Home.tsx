@@ -5,6 +5,7 @@ import CardChar from '../../components/Cards/CardChar'
 
 import './home.css'
 import Logo from '../../components/Logo/Logo'
+import { useNavigate } from 'react-router-dom'
 
 
 const url_api = "http://127.0.0.1:5000/character/"
@@ -23,12 +24,17 @@ export default function Home(props : HomeProps){
     const [ char, setChar] = useState("")
     const [ characters, setCharacters] = useState<CharData[]>([])
 
+    const [page, setPage] = useState(1);
+
+    const navigate = useNavigate();
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
         setChar(event.target.value)
     }
+   
 
-    const getCharacters = async (url_api: RequestInfo | URL) =>{
-        const res = await fetch(url_api)
+    const getCharacters = async (url_api_full: RequestInfo | URL) =>{
+        const res = await fetch(url_api_full)
         const data = await res.json();
 
         console.log(data);
@@ -43,10 +49,14 @@ export default function Home(props : HomeProps){
         setCharacters([charData]);       
     }
 
-    useEffect( () => {
-        const url_find = `${url_api}find/1`;
-        getCharacters(url_find);
-    },[])
+    const handleClick = () => {
+        const url_params = `?name=${char}&page${page}`
+        const full_url = `${url_api}${url_params}`
+        getCharacters(full_url)
+        navigate(url_params)
+        
+    }
+
 
     return(
         <>
@@ -59,20 +69,14 @@ export default function Home(props : HomeProps){
                         value={char} 
                         onChange={handleChange} 
                         name="character" />
-                    <Button colorScheme='teal' variant='outline'> Search </Button>
-                    
-                    {characters.map((character, index)=>(
-                        <CardChar
-                        key={index} 
-                        img_url={character.img_url_p} 
-                        name_char={character.name_char_p} 
-                        race_char={character.race_char_p}   /> 
-                    ))}            '
+                    <Button 
+                        colorScheme='teal' 
+                        variant='outline'
+                        onClick={handleClick}
+                        > Search </Button>
+
                 </div>
             </div>
-
-
-
         </>
     )
 }

@@ -9,7 +9,6 @@ import CardChar from "../../components/Cards/CardChar";
 const url_api = "http://127.0.0.1:5000/character/"
 
 interface ResultsPageProps {
-
 }
 
 interface CharData{
@@ -52,8 +51,6 @@ export default function ResultsPage(props : ResultsPageProps){
         getCharacters(url_find);
     },[])
 
-    //?page=4&name=Morty
-
     return(
         <>
             <div className="container">
@@ -67,17 +64,20 @@ export default function ResultsPage(props : ResultsPageProps){
                         onChange={handleChange} />
                     <Button colorScheme='teal' variant='outline'> Search </Button>
                 </div>
-                <Grid templateColumns='repeat(3,1fr)' templateRows='repeat(2, 1fr)' gap={6}>
-                {characters.map((character, index)=>(                                                    
-                            <CardChar
-                                key={index} 
-                                img_url={character.img_url_p} 
-                                name_char={character.name_char_p} 
-                                race_char={character.race_char_p}   />
-                        
-                    ))} 
-                </Grid> 
+                <div className="grid-teste">
 
+                    <Grid templateColumns='repeat(3,1fr)' templateRows='repeat(2, 1fr)' gap={8}>
+                        {characters.map((character, index)=>(                                                    
+                                <CardChar
+                                    key={index} 
+                                    img_url={character.img_url_p} 
+                                    name_char={character.name_char_p} 
+                                    race_char={character.race_char_p}   />                        
+                        ))} 
+                    </Grid> 
+                </div>
+
+                
             </div>
                    
         
