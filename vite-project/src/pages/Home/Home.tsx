@@ -53,7 +53,7 @@ export default function Home(props : HomeProps){
         const url_params = `?name=${char}&page${page}`
         const full_url = `${url_api}${url_params}`
         getCharacters(full_url)
-        navigate(url_params)
+        navigate(url_params)        
         
     }
 

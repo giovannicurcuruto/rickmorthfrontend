@@ -5,6 +5,8 @@ import Logo from "../../components/Logo/Logo";
 
 import './Results.css';
 import CardChar from "../../components/Cards/CardChar";
+import { useNavigate } from "react-router-dom";
+import PaginationComponent from "../../components/Pagination/pagination";
 
 const url_api = "http://127.0.0.1:5000/character/"
 
@@ -21,6 +23,13 @@ export default function ResultsPage(props : ResultsPageProps){
     const [char, setChar] = useState("")
     const [ characters, setCharacters] = useState<CharData[]>([])
 
+    const [page, setPage] = useState(1);
+    const [total_pages, setTotalPages] = useState(0);
+
+    const navigate = useNavigate();
+
+    
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
         setChar(event.target.value)
     }
@@ -28,28 +37,37 @@ export default function ResultsPage(props : ResultsPageProps){
     const getCharacters = async (url_api: RequestInfo | URL) =>{
         const res = await fetch(url_api);
         const data = await res.json();       
-        
-        const charData: CharData = {
-            img_url_p: data['data']["1"]["image"],
-            name_char_p: data['data']["1"]["name"],
-            race_char_p: data['data']["1"]["species"]
-        };        
-  
+
         const charDataX: CharData[] = data['data'].map((char:any) => ({
             img_url_p: char['image'],
             name_char_p: char['name'],
             race_char_p: char['species']
         }))        
-        console.log(charDataX)
-        console.log(characters)
 
+        console.log(data['total_pages'])
+        setTotalPages(data['total_pages'])
         setCharacters(charDataX);
     }
 
-    useEffect( () => {
-        const url_find = `${url_api}?page=1&name=Morty`;
-        getCharacters(url_find);
-    },[])
+    const handleClick = () =>{
+        const full_url = `${url_api}?page=${page}&name=${char}`; 
+
+        getCharacters(full_url);
+        navigate(`?page=${page}&name=${char}`);
+
+        
+    }
+
+    const handlePageChange = (page: number) =>{
+        setPage(page)
+    }
+
+    const handleTotalPages = (data: number) =>{
+        return data
+    }
+
+    
+
 
     return(
         <>
@@ -62,7 +80,9 @@ export default function ResultsPage(props : ResultsPageProps){
                         name={"character"} 
                         value={char} 
                         onChange={handleChange} />
-                    <Button colorScheme='teal' variant='outline'> Search </Button>
+                    <Button colorScheme='teal'
+                        variant='outline'
+                        onClick={handleClick} > Search </Button>
                 </div>
                 <div className="grid-teste">
 
@@ -74,8 +94,10 @@ export default function ResultsPage(props : ResultsPageProps){
                                     name_char={character.name_char_p} 
                                     race_char={character.race_char_p}   />                        
                         ))} 
-                    </Grid> 
+                    </Grid>
+                    <PaginationComponent currentPage={page} totalPages={total_pages} onPageChange={handlePageChange}/>
                 </div>
+                
 
                 
             </div>
