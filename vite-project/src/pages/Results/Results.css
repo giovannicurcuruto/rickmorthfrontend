@@ -13,3 +13,9 @@
     margin-bottom: 16px;
     margin-top: auto;
 }
+
+.container{
+  background-image: url("../../assets/background-RR2.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
